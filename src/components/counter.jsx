@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
+
+//Passing children through props is to pass an object property between 
+//opening and closing tags and render content.
 class Counter extends Component {
     state = {
-        count: this.props.value,
+        value: this.props.value,
         tags: []
     };
 
@@ -16,15 +19,16 @@ class Counter extends Component {
     }
 
     handleIncrement = () => {
-        this.setState({ count: this.state.count + 1 });
+        this.setState({ value: this.state.count + 1 });
     }
     
     render() { 
-        console.log('props', this.props);
+        console.log(this.props)
 
         return (
         <React.Fragment> 
             <br/>
+            <h4>{this.props.id}</h4>
             {/* { this.state.tags.length === 0 && "Please create new tag!   " } */}
             <span className={this.getBadgeClasses()}>{ this.formatCount() }</span>
             <button onClick={() => this.handleIncrement()} className="btn btn-secondary btn-sm">Increment</button>

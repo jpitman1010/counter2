@@ -12,12 +12,13 @@ class Counters extends Component {
      };
 
     render() { 
-        console.log('props', this.psrops);
         
         return ( 
             <div>
                 { this.state.counters.map(counter => 
-                <Counter key={counter.id}  value={counter.value} selected={true}/>)}
+                <Counter key={counter.id}  value={counter.value}>
+                    <h4>Counter # {counter.id}</h4>
+                </Counter>)}
             </div>
          );
     }
