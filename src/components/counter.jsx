@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 //and use props to and raises events whenever data needs to be changed.
 //it receives all data through the parent props.  So delete local state and 
 //change all references to that local state
+//this is referred to as a controlled component
 class Counter extends Component {
 
     render() { 
@@ -12,7 +13,7 @@ class Counter extends Component {
         <div> 
             {/* { this.state.tags.length === 0 && "Please create new tag!   " } */}
             <span className={this.getBadgeClasses()}>
-                { this.props.counter.value }
+                { this.formatCount() }
             </span>
             <button onClick={() => this.props.onIncrement(this.props.counter)}
             className="btn btn-secondary btn-sm" >
