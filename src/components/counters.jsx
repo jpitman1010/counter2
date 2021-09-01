@@ -17,6 +17,14 @@ class Counters extends Component {
         console.log('event handler called', counters);
      };
 
+     handleIncrement = counter => {
+        const counters = [...this.state.counters];
+        const index = counters.indexOf(counter);
+        counters[index] = {...counter};
+        counters[index].value++;
+        this.setState({ counters });
+    }
+
     render() { 
         
         return ( 
@@ -26,6 +34,7 @@ class Counters extends Component {
                     key={counter.id} 
                     value={counter.value} 
                     onDelete={this.handleDelete} 
+                    onIncrement={this.handleIncrement}
                     counter={counter}
                  />
                 ))}

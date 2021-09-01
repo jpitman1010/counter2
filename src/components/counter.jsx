@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
 
-
+//creating a single source of truth is necessary in order to have 1 reset
+//button that allows all counters to be reset to 0.  Must remove local state
+//and use props to and raises events whenever data needs to be changed.
+//it receives all data through the parent props.  So delete local state and 
+//change all references to that local state
 class Counter extends Component {
-    state = {
-        count: this.props.counter.value,
-        tags: []
-    };
-
-    renderTags() {
-        
-        if (this.state.tags.length === 0) return "There are no tags!";
-        return  <ul>
-        { this.state.tags.map(tag => <li key={ tag }>{ tag }</li>) }
-    </ul>
-    }
-
-    handleIncrement = () => {
-        this.setState({ count: this.state.count + 1 });
-    }
-
 
     render() { 
         return (
         <div> 
-            <br/>
             {/* { this.state.tags.length === 0 && "Please create new tag!   " } */}
             <span className={this.getBadgeClasses()}>
-                { this.formatCount() }
+                { this.props.counter.value }
             </span>
-            <button onClick={() => this.handleIncrement()} 
+            <button onClick={() => this.props.onIncrement(this.props.counter)}
             className="btn btn-secondary btn-sm" >
                 Increment
             </button>
@@ -42,15 +28,15 @@ class Counter extends Component {
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += (this.state.count === 0) ? "warning" : "primary";
+        classes += (this.props.counter.value === 0) ? "warning" : "primary";
         return classes;
     }
 
 
 
     formatCount() {
-        const  { count } = this.state;
-        return count === 0 ? 'Zero' : count;
+        const  { value } = this.props.counter;
+        return value === 0 ? 'Zero' : value;
     }
 }
  
