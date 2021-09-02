@@ -3,6 +3,8 @@ import './App.css';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
 
+
+//lifecycle hooks render mounting components in a specific order: Constructor, Rendered, Mounted
 class App extends Component {
   state = { 
     counters: [
@@ -15,10 +17,15 @@ class App extends Component {
 
   constructor() {
     super();
-    console.log('App - Constructor', this.props)
+    console.log('App - Constructor', this.props);
+  };
 
-  }
-
+  componentDidMount() {
+    //perfect place to make ajax call to get data from server
+    // this.setState({  });
+    console.log('App - Mounted')
+  };
+  
  handleDelete = counterId => {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters });
@@ -41,6 +48,7 @@ class App extends Component {
       this.setState({ counters });
   };
   render() {
+    console.log('App - Rendered');
   return (
     <React.Fragment>
       <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />

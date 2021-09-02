@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 class Counter extends Component {
 
     render() { 
+        console.log('Counter - Rendered')
         return (
         <div> 
             {/* { this.state.tags.length === 0 && "Please create new tag!   " } */}
