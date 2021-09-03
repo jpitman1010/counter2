@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-//creating a single source of truth is necessary in order to have 1 reset
-//button that allows all counters to be reset to 0.  Must remove local state
-//and use props to and raises events whenever data needs to be changed.
-//it receives all data through the parent props.  So delete local state and 
-//change all references to that local state
-//this is referred to as a controlled component
 class Counter extends Component {
+    componentDidUpdate(prevProps, prevState) {
+        console.log('previous props', prevProps);
+        console.log('previous state', prevState);
+        if (prevProps.counter.value !== this.props.counter.value) {
+            //can make an Ajax call and get new data from server.
+        }
+    };
 
     render() { 
         console.log('Counter - Rendered')
