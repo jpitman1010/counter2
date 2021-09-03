@@ -9,6 +9,12 @@ class Counter extends Component {
         }
     };
 
+    componentWillUnmount() {
+        console.log('Counter - Unmount');
+        //when you delete the counter, this message will appear because the state
+        //has now changed.
+    };
+
     render() { 
         console.log('Counter - Rendered')
         return (
